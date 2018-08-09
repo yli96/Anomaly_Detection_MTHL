@@ -199,7 +199,7 @@ class MTHL(object):
 	def predict(self,X,fg="score"):
 		"""Given a new dataset X, calculate distances (fg="score") or labels (fg="label")
 		"""
-		diff = [[self._P[v].T.dot(X[v][i]).dot(self._Q[v]) - self._Y for i in range(len(X[0)] for v in range(self._V)]
+		diff = [[self._P[v].T.dot(X[v][i]).dot(self._Q[v]) - self._Y for i in range(len(X[0]))] for v in range(self._V)]
 		dist = np.array([[self._kernel(d,d) for d in diff[v]] for v in range(self._V)])
 		
 		if fg=="score":
